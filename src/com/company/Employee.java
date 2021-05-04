@@ -1,49 +1,55 @@
 package com.company;
+public abstract class Employee {
+    private static int id=0;
+   private String name;
+   private double baseSalary;
+   private int EmployeeID;
 
-abstract public class Employee {
-    // Instance variable
-    private String name;
-    public double baseSalary;
-    private int empID;
-    public double bonus_budget;
+   public Employee(String name, double baseSalary){
+       id++;
+       this.setEmployeeID(id);
+       this.setName(name);
+       this.setBaseSalary(baseSalary);
+   }
 
-
-    public int head_count = 0;
-    // variable declared with reference data type
-    private Employee manager;
-
-
-    // Class variable, thus static keyword is used,can pile up a number of employees.
-    private static int ID_count;
-
-    public Employee(String name, double baseSalary){
-        this.name = name;
-        this.baseSalary = baseSalary;
-        empID++;
-        this.empID = ID_count;
-    }
-    public double getBaseSalary(){
-        return baseSalary;
-    }
-    public String getName(){
+    public String getName() {
         return name;
     }
-    public int getEmpID(){
-        return empID;
+
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Employee getManager(){
+    public double getBaseSalary() {
+        return baseSalary;
+    }
+
+    public void setBaseSalary(double baseSalary) {
+        this.baseSalary = baseSalary;
+    }
+
+    public int getEmployeeID() {
+        return EmployeeID;
+    }
+
+    public void setEmployeeID(int employeeID) {
+        EmployeeID = employeeID;
+    }
+    private Employee manager;
+
+    public Employee getManager() {
         return manager;
     }
 
+    public void setManager(Employee manager) {
+        this.manager = manager;
+    }
+
     public boolean equals(Employee other){
-        return this.getEmpID() == other.getEmpID();
+        return this.getEmployeeID() == other.EmployeeID;
     }
-
     public String toString(){
-        return getEmpID()+ " " + getName();
+        return this.getEmployeeID()+ " " + this.getName();
     }
-
-    abstract public String employeeStatus();
-
+    public abstract String employeeStatus();
 }
