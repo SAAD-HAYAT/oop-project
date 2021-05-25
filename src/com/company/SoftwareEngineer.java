@@ -18,8 +18,16 @@ public class SoftwareEngineer extends TechnicalEmployee{
         return super.checkins;
     }
 
-//    public boolean checkInCode(){
-//        if
-//    }
-
+    public boolean checkInCode(TechnicalLead t,SoftwareEngineer e){
+        if (t.approveCheckIn(e)){
+            this.getSuccessfulCheckIns();
+            return true;
+        }
+        else
+        return false;
+    }
+    @Override
+    public String employeeStatus(){
+        return super.toString()+"has" +this.checkins+ "successful check ins ,is supporting " + super.getName();
+    }
 }

@@ -1,22 +1,39 @@
 package com.company;
 import java.util.ArrayList;
 public class TechnicalLead extends TechnicalEmployee{
-    private double baseSalary;
-    private int headCount;
+    private  static double headCount;
+    ArrayList<SoftwareEngineer> group = new ArrayList<SoftwareEngineer>();
     public TechnicalLead(String name){
         super(name);
-        baseSalary=getBaseSalary()*1.3;
-        setHeadCount(4);
+        super.setBaseSalary(getBaseSalary()*1.3);
+        headCount=4;
     }
-
-    public int getHeadCount() {
-        return headCount;
+    boolean hasHeadcount(){
+        if(group.size()<headCount) {
+            return true;
+        }
+        else
+            return false;
     }
-
-    public void setHeadCount(int headCount) {
-        this.headCount = headCount;
+    public  boolean addReport(SoftwareEngineer e){
+        if(this.hasHeadcount()) {
+            this.group.add(e);
+            return true;
+        }
+        else
+            return false;
     }
-//    public boolean hasHeadCount(){
+    public boolean approveCheckIn(SoftwareEngineer e) {
+        if (this.addReport(e) && e.getCodeAccess())
+            return true;
+        else
+        return false;
+    }
+//    public boolean requestBonus(Employee e, double bonus){
 //
 //    }
+//    public String getTeamStatus(){
+//
+//    }
+
 }
