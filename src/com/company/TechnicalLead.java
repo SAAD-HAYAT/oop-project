@@ -18,17 +18,19 @@ public class TechnicalLead extends TechnicalEmployee{
     public  boolean addReport(SoftwareEngineer e){
         if(this.hasHeadcount()) {
             this.group.add(e);
+            e.setManager(this);
             return true;
         }
         else
             return false;
     }
     public boolean approveCheckIn(SoftwareEngineer e) {
-        if (this.addReport(e) && e.getCodeAccess())
+        if (e.getManager().equals(this) &&  e.getCodeAccess())
             return true;
         else
         return false;
     }
+
 //    public boolean requestBonus(Employee e, double bonus){
 //
 //    }

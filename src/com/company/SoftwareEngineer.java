@@ -2,9 +2,12 @@ package com.company;
 
 public class SoftwareEngineer extends TechnicalEmployee{
     private boolean codeAccess;
+    SoftwareEngineer e;
     public SoftwareEngineer(String name){
         super(name);
         this.setCodeAccess(true);
+        this.e=e;
+        super.Checkins();
     }
 
     public boolean getCodeAccess() {
@@ -18,13 +21,16 @@ public class SoftwareEngineer extends TechnicalEmployee{
         return super.checkins;
     }
 
-    public boolean checkInCode(TechnicalLead t,SoftwareEngineer e){
-        if (t.approveCheckIn(e)){
-            this.getSuccessfulCheckIns();
+    public boolean checkInCode(){
+        TechnicalLead manager=(TechnicalLead) this.getManager();
+        if (manager.approveCheckIn(e)){
+            this.Checkins();
             return true;
         }
         else
+        {this.setCodeAccess(false);
         return false;
+        }
     }
     @Override
     public String employeeStatus(){
