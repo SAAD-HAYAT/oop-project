@@ -4,6 +4,7 @@ public abstract class Employee {
    private String name;
    private double baseSalary;
    private int EmployeeID;
+   private  double bonus;
 
    public Employee(String name, double baseSalary){
        id++;
@@ -11,6 +12,14 @@ public abstract class Employee {
        this.setName(name);
        this.setBaseSalary(baseSalary);
    }
+
+    public double getBonus() {
+        return bonus;
+    }
+
+    public void setBonus(double bonus) {
+        this.bonus = bonus;
+    }
 
     public String getName() {
         return name;
